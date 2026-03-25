@@ -33,7 +33,7 @@ npm install
 npm run build
 ```
 
-The output `.deb` will be in `dist/`. Install it with `sudo dpkg -i dist/discord-updater_*.deb`.
+The output `.deb` will be in `dist/`. Install it with `sudo dpkg -i dist/comet_*.deb`.
 
 ---
 
