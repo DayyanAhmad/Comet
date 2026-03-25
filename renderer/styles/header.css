@@ -1,0 +1,50 @@
+.header {
+  flex-shrink: 0;
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 140, 255, 0.12) 0%,
+    rgba(0, 220, 255, 0.06) 100%
+  );
+  border-bottom: 1px solid var(--border-card);
+  position: relative;
+  z-index: 1;
+}
+
+.header__icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: var(--radius-icon);
+  background: linear-gradient(135deg, #1a3a6a, #0d2347);
+  box-shadow: 0 4px 16px var(--glow-discord);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.header__icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px var(--glow-cyan));
+}
+
+.header__name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.header__subtitle {
+  font-size: 13px;
+  color: var(--text-link);
+  font-weight: 500;
+  margin-top: 2px;
+}

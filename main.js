@@ -33,14 +33,20 @@ const SCRIPTS_DIR = app.isPackaged
 // ── Window setup ──────────────────────────────────────────────
 function createWindow() {
   const win = new BrowserWindow({
-    width: 460,
-    height: 660,
-    frame: false,
+    width:     440,
+    height:    620,
+    minWidth:  440,
+    minHeight: 620,
+    maxWidth:  440,
+    maxHeight: 620,
     resizable: false,
+    frame: false,
+    backgroundColor: '#060d1c',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
-      nodeIntegration: false
+      nodeIntegration: false,
+      sandbox: false,
     }
   });
   win.loadFile('renderer/index.html');

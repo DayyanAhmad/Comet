@@ -5,113 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'" />
   <title>Comet</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/window.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/info.css" />
+  <link rel="stylesheet" href="styles/tabs.css" />
+  <link rel="stylesheet" href="styles/steps.css" />
+  <link rel="stylesheet" href="styles/progress.css" />
+  <link rel="stylesheet" href="styles/buttons.css" />
+  <link rel="stylesheet" href="styles/logs.css" />
+  <link rel="stylesheet" href="styles/badges.css" />
+  <link rel="stylesheet" href="styles/stars.css" />
 </head>
 <body>
-  <div class="app">
 
-    <!-- Titlebar / drag region -->
+  <div class="window">
+
+    <!-- Titlebar -->
     <div class="titlebar">
-      <span class="titlebar-title">Comet</span>
-      <button class="titlebar-close" id="close-btn" aria-label="Close">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
-          <path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
+      <div class="titlebar__controls">
+        <div class="titlebar__dot titlebar__dot--close" id="close-dot"></div>
+        <div class="titlebar__dot titlebar__dot--min"></div>
+        <div class="titlebar__dot titlebar__dot--max"></div>
+      </div>
+      <span class="titlebar__title">Comet</span>
+      <div class="titlebar__spacer"></div>
     </div>
 
-    <!-- Scrollable content -->
-    <div class="content">
-
-      <!-- Header -->
-      <div class="header">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-            <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
-          </svg>
-        </div>
-        <div>
-          <p class="app-name">Comet</p>
-          <p class="app-subtitle">Keep Discord up to date</p>
-        </div>
+    <!-- Header -->
+    <div class="header">
+      <div class="header__icon">
+        <img src="../assets/icon.png" alt="Comet" />
       </div>
-
-      <!-- Version card -->
-      <div class="version-card">
-        <div class="list-row">
-          <span class="row-label">Installed</span>
-          <span class="row-value" id="installed-version">Checking…</span>
-        </div>
-        <div class="list-row">
-          <span class="row-label">Latest</span>
-          <span class="row-value" id="latest-version">—</span>
-        </div>
-        <div class="list-row">
-          <span class="row-label">Status</span>
-          <span class="badge" id="update-badge">Not checked</span>
-        </div>
+      <div class="header__text">
+        <div class="header__name">Comet</div>
+        <div class="header__subtitle">Keep Discord up to date</div>
       </div>
+    </div>
 
-      <!-- Segmented control -->
-      <div class="segmented-control" role="tablist">
-        <button class="segment active" id="tab-update-btn" role="tab" aria-selected="true">Update</button>
-        <button class="segment" id="tab-logs-btn" role="tab" aria-selected="false">Logs</button>
+    <!-- Version info rows -->
+    <div class="info-section">
+      <div class="info-row">
+        <span class="info-row__label">Installed</span>
+        <span class="info-row__value info-row__value--empty" id="installed-version">—</span>
       </div>
-
-      <!-- Update tab -->
-      <div class="tab-panel" id="tab-update" role="tabpanel">
-        <div class="steps-card">
-          <div class="step idle" id="step-1">
-            <div class="step-dot"></div>
-            <span class="step-label">Check installed version</span>
-          </div>
-          <div class="step idle" id="step-2">
-            <div class="step-dot"></div>
-            <span class="step-label">Download Discord</span>
-          </div>
-          <div class="step idle" id="step-3">
-            <div class="step-dot"></div>
-            <span class="step-label">Install Discord</span>
-          </div>
-          <div class="step idle" id="step-4">
-            <div class="step-dot"></div>
-            <span class="step-label">Launch Discord</span>
-          </div>
-        </div>
-
-        <!-- Progress -->
-        <div class="progress-section" id="progress-section" hidden>
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-bar"></div>
-          </div>
-          <p class="progress-label" id="progress-label"></p>
-        </div>
-
-        <!-- Error banner -->
-        <div class="error-banner" id="error-banner" hidden role="alert">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0">
-            <path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM8 4a.75.75 0 0 0-.75.75v3.5a.75.75 0 0 0 1.5 0v-3.5A.75.75 0 0 0 8 4z"/>
-          </svg>
-          <span id="error-message">An error occurred.</span>
-        </div>
+      <div class="info-row">
+        <span class="info-row__label">Latest</span>
+        <span class="info-row__value info-row__value--empty" id="latest-version">—</span>
       </div>
-
-      <!-- Logs tab -->
-      <div class="tab-panel" id="tab-logs" role="tabpanel" hidden>
-        <div class="log-panel">
-          <div class="log-actions">
-            <button class="btn-plain" id="open-log-btn">Open log file</button>
-          </div>
-          <div class="log-output" id="log-output"></div>
-        </div>
+      <div class="info-row">
+        <span class="info-row__label">Status</span>
+        <span class="badge badge--neutral" id="status-badge">Not checked</span>
       </div>
+    </div>
 
-    </div><!-- /content -->
+    <!-- Tab bar -->
+    <div class="tabs">
+      <button class="tab tab--active" id="tab-update">Update</button>
+      <button class="tab" id="tab-logs">Logs</button>
+    </div>
 
-    <!-- Button row -->
-    <div class="button-row">
-      <button class="btn btn-secondary" id="check-btn">Check for updates</button>
-      <button class="btn btn-primary" id="update-btn" disabled>Update Discord</button>
+    <!-- Steps panel (update tab) -->
+    <div class="steps" id="steps-panel">
+      <div class="step" id="step-1">
+        <div class="step__dot" id="dot-1">1</div>
+        <span class="step__label">Check installed version</span>
+      </div>
+      <div class="step" id="step-2">
+        <div class="step__dot" id="dot-2">2</div>
+        <span class="step__label">Download Discord</span>
+      </div>
+      <div class="step" id="step-3">
+        <div class="step__dot" id="dot-3">3</div>
+        <span class="step__label">Install Discord</span>
+      </div>
+      <div class="step" id="step-4">
+        <div class="step__dot" id="dot-4">4</div>
+        <span class="step__label">Launch Discord</span>
+      </div>
+    </div>
+
+    <!-- Logs panel (logs tab) -->
+    <div class="logs-panel" id="logs-panel">
+      <div class="logs-panel__toolbar">
+        <button class="btn btn--ghost" id="btn-open-log">Open log file</button>
+      </div>
+      <div class="logs-panel__output" id="logs-output"></div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-meta__label" id="progress-label">Downloading…</span>
+        <span class="progress-meta__pct" id="progress-pct"></span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Footer buttons -->
+    <div class="footer">
+      <button class="btn btn--ghost" id="btn-check">Check for updates</button>
+      <button class="btn btn--primary" id="btn-update" disabled>Update Discord</button>
     </div>
 
   </div>

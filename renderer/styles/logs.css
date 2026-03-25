@@ -1,0 +1,46 @@
+.logs-panel {
+  display: none;
+}
+.logs-panel--visible {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  margin: var(--space-3) var(--space-5) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.logs-panel__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-2);
+}
+
+.logs-panel__toolbar .btn--ghost {
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+.logs-panel__output {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-logs);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-card);
+}
+
+.log-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.log-line--info    { color: var(--accent-cyan); }
+.log-line--success { color: var(--accent-green); }
+.log-line--error   { color: var(--accent-red); }
+.log-line--dim     { color: var(--text-tertiary); opacity: 0.6; }

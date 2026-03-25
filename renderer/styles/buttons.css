@@ -1,0 +1,64 @@
+.footer {
+  flex-shrink: 0;
+  padding: var(--space-3) var(--space-5) var(--space-5);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Shared button base ── */
+.btn {
+  padding: 13px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  transition:
+    opacity    var(--duration-fast) var(--ease-standard),
+    transform  100ms               var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+.btn:active   { transform: scale(0.97); }
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Ghost — "Check for updates" ── */
+.btn--ghost {
+  background: transparent;
+  border: 1.5px solid var(--border-btn);
+  color: #00aadd;
+}
+.btn--ghost:hover {
+  background: rgba(0, 200, 255, 0.08);
+  border-color: rgba(0, 200, 255, 0.60);
+}
+
+/* ── Primary — "Update Discord" ── */
+.btn--primary {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+  color: #ffffff;
+  border: none;
+  box-shadow:
+    0 4px 20px var(--glow-blue),
+    0 0 0 1px rgba(0, 200, 255, 0.20);
+}
+.btn--primary:hover {
+  box-shadow:
+    0 4px 28px var(--glow-cyan-strong),
+    0 0 0 1px rgba(0, 200, 255, 0.35);
+  transform: translateY(-1px);
+}
+.btn--primary:active { transform: scale(0.97) translateY(0); }
+
+/* ── Success state ── */
+.btn--success {
+  background: linear-gradient(135deg, #1a8f3a, var(--accent-green));
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 20px var(--glow-green);
+}

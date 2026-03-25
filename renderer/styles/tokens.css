@@ -1,0 +1,74 @@
+:root {
+  /* ── Backgrounds ───────────────────────────────────── */
+  --bg-window:        #060d1c;
+  --bg-deep:          #071020;
+  --bg-header:        #0d1a2e;
+  --bg-card:          rgba(0, 150, 255, 0.06);
+  --bg-card-hover:    rgba(0, 150, 255, 0.10);
+  --bg-tab-bar:       rgba(0, 0, 0, 0.30);
+  --bg-tab-active:    rgba(0, 140, 255, 0.20);
+  --bg-logs:          rgba(0, 0, 0, 0.35);
+
+  /* ── Accent colours ────────────────────────────────── */
+  --accent-cyan:      #00d4ff;
+  --accent-blue:      #0066ff;
+  --accent-blue-mid:  #0088ff;
+  --accent-green:     #00dc82;
+  --accent-green-dim: #00a86b;
+  --accent-amber:     #ffb400;
+  --accent-red:       #ff453a;
+
+  /* ── Text ──────────────────────────────────────────── */
+  --text-primary:     #e8f4ff;
+  --text-secondary:   #6b9ab8;
+  --text-tertiary:    #3a6a88;
+  --text-cyan:        #00d4ff;
+  --text-link:        #4a9ebe;
+
+  /* ── Borders ───────────────────────────────────────── */
+  --border-window:    rgba(0, 200, 255, 0.15);
+  --border-card:      rgba(0, 200, 255, 0.08);
+  --border-card-mid:  rgba(0, 200, 255, 0.12);
+  --border-tab:       rgba(0, 200, 255, 0.10);
+  --border-subtle:    rgba(255, 255, 255, 0.06);
+  --border-btn:       rgba(0, 200, 255, 0.35);
+
+  /* ── Glow / shadow ─────────────────────────────────── */
+  --glow-cyan:        rgba(0, 200, 255, 0.40);
+  --glow-cyan-strong: rgba(0, 200, 255, 0.60);
+  --glow-blue:        rgba(0, 150, 255, 0.40);
+  --glow-green:       rgba(0, 220, 130, 0.40);
+  --glow-discord:     rgba(88, 101, 242, 0.50);
+  --shadow-window:    0 32px 80px rgba(0, 0, 0, 0.70),
+                      0 0 60px rgba(0, 150, 255, 0.06),
+                      0 0 0 1px rgba(0, 200, 255, 0.06);
+
+  /* ── Spacing (4pt grid) ────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+
+  /* ── Corner radii ──────────────────────────────────── */
+  --radius-window:  14px;
+  --radius-card:    10px;
+  --radius-btn:     12px;
+  --radius-dot:     50%;
+  --radius-badge:   999px;
+  --radius-tab:     8px;
+  --radius-icon:    14px;
+
+  /* ── Typography ────────────────────────────────────── */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', ui-monospace, monospace;
+
+  /* ── Transitions ───────────────────────────────────── */
+  --ease-standard: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:      cubic-bezier(0.0, 0.0, 0.2, 1.0);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+}
