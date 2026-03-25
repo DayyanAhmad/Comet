@@ -1,0 +1,23 @@
+{
+  "name": "discord-updater",
+  "version": "1.0.0",
+  "description": "A desktop GUI app to update Discord on Ubuntu",
+  "author": {
+    "name": "Discord Updater",
+    "email": "user@localhost"
+  },
+  "homepage": "https://github.com/user/discord-updater",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "build": "electron-builder --linux deb"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.0",
+    "fs-extra": "^11.0.0"
+  }
+}
