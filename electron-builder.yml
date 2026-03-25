@@ -1,13 +1,20 @@
-appId: com.discordupdater.app
-productName: Discord Updater
+appId: com.comet.app
+productName: comet
 directories:
   output: dist
+
+extraFiles:
+  - from: scripts/
+    to: scripts/
+  - from: com.comet.install.policy
+    to: com.comet.install.policy
 
 linux:
   target: deb
   category: Utility
   icon: assets/icon.png
-  executableName: discord-updater
+  executableName: comet
+  description: A one-click Discord updater for Ubuntu
 
 deb:
   afterInstall: scripts/postinstall.sh

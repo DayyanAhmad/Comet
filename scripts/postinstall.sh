@@ -1,12 +1,19 @@
 #!/bin/bash
-# Runs as root after the discord-updater .deb is installed.
+# Runs as root after the comet .deb is installed.
 
 # Copy polkit policy into place
-cp /opt/discord-updater/com.discordupdater.install.policy \
+cp /opt/comet/com.comet.install.policy \
    /usr/share/polkit-1/actions/
 
 # Make shell scripts executable
-chmod +x /opt/discord-updater/scripts/*.sh
+chmod +x /opt/comet/scripts/*.sh
 
-# Reload polkit
-systemctl reload polkit || true
+# Create symlink so 'comet' works from terminal
+ln -sf /opt/comet/comet /usr/local/bin/comet
+
+# Fix Electron sandbox permissions
+chown root /opt/comet/chrome-sandbox
+chmod 4755 /opt/comet/chrome-sandbox
+
+# Restart polkit to pick up new policy
+systemctl restart polkit 2>/dev/null || pkill -HUP polkitd 2>/dev/null || true

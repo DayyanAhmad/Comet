@@ -11,7 +11,7 @@ let logStream;
 function initLogger() {
   const logDir = app.getPath('logs');
   fs.mkdirSync(logDir, { recursive: true });
-  logPath = path.join(logDir, 'discord-updater.log');
+  logPath = path.join(logDir, 'comet.log');
   logStream = fs.createWriteStream(logPath, { flags: 'a' });
   logStream.write(`\n--- Session started ${new Date().toISOString()} ---\n`);
 }
@@ -24,6 +24,11 @@ function log(level, msg) {
     win.webContents.send('app-log', { level, msg });
   }
 }
+
+// ── Scripts path (differs between dev and packaged) ──────────
+const SCRIPTS_DIR = app.isPackaged
+  ? path.join(path.dirname(process.execPath), 'scripts')
+  : path.join(__dirname, 'scripts');
 
 // ── Window setup ──────────────────────────────────────────────
 function createWindow() {
@@ -102,8 +107,8 @@ ipcMain.handle('get-latest-version', async () => {
 ipcMain.on('start-update', (event) => {
   const send = (type, payload) => event.sender.send('update-progress', { type, ...payload });
 
-  const DEST_DIR = '/tmp/discord-updater';
-  const INSTALL_SCRIPT = path.join(__dirname, 'scripts', 'install-discord.sh');
+  const DEST_DIR = '/tmp/comet';
+  const INSTALL_SCRIPT = path.join(SCRIPTS_DIR, 'install-discord.sh');
 
   log('INFO', 'Update started');
 
@@ -117,7 +122,7 @@ ipcMain.on('start-update', (event) => {
     // Step 2 — download
     send('step', { step: 2, status: 'active' });
     log('INFO', `Starting download to ${DEST_DIR}`);
-    const dl = spawn('bash', [path.join(__dirname, 'scripts', 'download-discord.sh'), DEST_DIR]);
+    const dl = spawn('bash', [path.join(SCRIPTS_DIR, 'download-discord.sh'), DEST_DIR]);
 
     let debPath = '';
     dl.stdout.on('data', (data) => {
@@ -155,7 +160,7 @@ ipcMain.on('start-update', (event) => {
         // Step 4 — launch Discord
         send('step', { step: 4, status: 'active' });
         log('INFO', 'Launching Discord...');
-        spawn('bash', [path.join(__dirname, 'scripts', 'launch-discord.sh')], { detached: true });
+        spawn('bash', [path.join(SCRIPTS_DIR, 'launch-discord.sh')], { detached: true });
         setTimeout(() => {
           send('step', { step: 4, status: 'done' });
           send('complete', {});

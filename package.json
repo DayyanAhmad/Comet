@@ -1,12 +1,12 @@
 {
-  "name": "discord-updater",
+  "name": "comet",
   "version": "1.0.0",
-  "description": "A desktop GUI app to update Discord on Ubuntu",
+  "description": "A one-click Discord updater for Ubuntu",
   "author": {
     "name": "Discord Updater",
     "email": "user@localhost"
   },
-  "homepage": "https://github.com/user/discord-updater",
+  "homepage": "https://github.com/user/comet",
   "main": "main.js",
   "scripts": {
     "start": "electron . --no-sandbox",
