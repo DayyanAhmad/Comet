@@ -1,4 +1,4 @@
-# Discord Updater
+# Comet
 
 A lightweight desktop app for Ubuntu that keeps Discord up to date — check for the latest version, download it, and install it with a single click.
 
