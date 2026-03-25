@@ -11,13 +11,13 @@ Built with Electron. Styled after Apple HIG.
 Download the latest `.deb` from the [Releases](https://github.com/DayyanAhmad/Comet/releases) page and install it:
 
 ```bash
-sudo dpkg -i discord-updater_*.deb
+sudo dpkg -i comet_*.deb
 ```
 
 Then launch it from your app menu or run:
 
 ```bash
-discord-updater
+comet
 ```
 
 ---
